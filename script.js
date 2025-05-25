@@ -211,30 +211,26 @@ function searchdata(value) {
 }
 
 
-
-
-
-
-
-
-
-
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        submit.click();
+    }
+});
 
 
 const inputs = document.querySelectorAll('.inputs input');
 
 document.addEventListener('keydown', function (event) {
-    const activeElement = document.activeElement; // العنصر النشط حاليًا
-    if (!activeElement || activeElement.tagName !== 'INPUT') return; // تأكد أن العنصر المدخل
+    const activeElement = document.activeElement;
+    if (!activeElement || activeElement.tagName !== 'INPUT') return;
 
-    const currentIndex = Array.from(inputs).indexOf(activeElement); // العثور على فهرس العنصر الحالي
+    const currentIndex = Array.from(inputs).indexOf(activeElement);
     if (event.key === 'ArrowDown') {
-        // الانتقال إلى العنصر التالي
-        const nextIndex = (currentIndex + 1) % inputs.length; // يسمح بالدوران
+        const nextIndex = (currentIndex + 1) % inputs.length;
         inputs[nextIndex].focus();
     } else if (event.key === 'ArrowUp') {
-        // الانتقال إلى العنصر السابق
-        const prevIndex = (currentIndex - 1 + inputs.length) % inputs.length; // يسمح بالدوران
+        const prevIndex = (currentIndex - 1 + inputs.length) % inputs.length;
         inputs[prevIndex].focus();
     }
 });
